@@ -252,6 +252,6 @@ tabstat variable_1 variable_2 variable_3
 #delimit cr
 ```
 
-2.7 Long lines
+### 2.7 Long lines
 
 Try to keep individual lines of code to 80 characters. This is a standard across many languages that makes it easier to read and review code.
