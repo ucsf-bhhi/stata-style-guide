@@ -20,3 +20,10 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      
+      - name: Commit README.MD
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git commit README.md -m 'Re-build README' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
