@@ -1,6 +1,5 @@
 ---
 title: BHHI Stata Style Guide
-author: Eve Perry
 toc: true
 format: 
   html: default
