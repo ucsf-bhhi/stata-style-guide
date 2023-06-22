@@ -2,7 +2,7 @@ project:
   render: 
     - stata-style-guide.qmd
 format:
-  html: 
+  bhhi-quarto-html: 
     format-links: false
   gfm:
      output-file: README.md

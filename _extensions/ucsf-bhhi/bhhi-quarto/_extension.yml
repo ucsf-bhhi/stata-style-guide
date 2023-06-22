@@ -1,0 +1,24 @@
+title: BHHI Quarto Format
+author: Eve Perry
+version: 0.1.0
+contributes:
+  format:
+    common:
+      execute:
+        echo: false
+        warning: false
+        message: false
+      knitr:
+        opts_chunk:
+          dev: ragg_png
+          dpi: 144
+    html:
+      theme: [minty, theme.scss]
+      title-block-banner: true
+      toc: true
+      toc-location: left
+      toc-title: Contents
+      anchor-sections: false
+      smooth-scroll: true
+      code-overflow: wrap
+      highlight-style: ayu

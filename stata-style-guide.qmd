@@ -2,9 +2,8 @@
 title: BHHI Stata Style Guide
 toc: true
 format: 
-  html: default
+  bhhi-quarto-html: default
   gfm: default
-format-links: false
 ---
 This is the BHHI guide to writing Stata code. Its goal is to create consistency in our code and to make our code more readable and understandable for each other and for our future selves.
 
