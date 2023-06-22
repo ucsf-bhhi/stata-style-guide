@@ -61,22 +61,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="stata-style-guide_files/libs/quarto-html/quarto.js"></script>
 <script src="stata-style-guide_files/libs/quarto-html/popper.min.js"></script>
 <script src="stata-style-guide_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="stata-style-guide_files/libs/quarto-html/anchor.min.js"></script>
 <link href="stata-style-guide_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="stata-style-guide_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="stata-style-guide_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="stata-style-guide_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="stata-style-guide_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 </head>
 
 <body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">BHHI Stata Style Guide</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">1. Files</a>
@@ -97,31 +113,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </nav>
 </div>
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">BHHI Stata Style Guide</h1>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
 </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
 
 <p>This is the BHHI guide to writing Stata code. Its goal is to create consistency in our code and to make our code more readable and understandable for each other and for our future selves.</p>
 <p>The guide draws heavily on the <a href="https://style.tidyverse.org/">R Tidyverse style guide</a> by Hadley Wickham (<a href="https://creativecommons.org/licenses/by-sa/3.0/">license</a>), with modifications for the Stata language.</p>
 <section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">1. Files</h2>
+<h2 data-anchor-id="files">1. Files</h2>
 <section id="names" class="level3">
-<h3 class="anchored" data-anchor-id="names">1.1 Names</h3>
+<h3 data-anchor-id="names">1.1 Names</h3>
 <p>File names should be meaningful and end in .do. Avoid using special characters in file names - stick with numbers, letters, -, and _.</p>
 <pre><code>// Good
 fit_models.do
@@ -141,7 +145,7 @@ stuff.do</code></pre>
 <p>Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.</p>
 </section>
 <section id="internal-structure" class="level3">
-<h3 class="anchored" data-anchor-id="internal-structure">1.2 Internal structure</h3>
+<h3 data-anchor-id="internal-structure">1.2 Internal structure</h3>
 <p>Use commented lines of - and = to break up your file into easily readable chunks.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Load data ---------------------------</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -150,9 +154,9 @@ stuff.do</code></pre>
 </section>
 </section>
 <section id="syntax" class="level2">
-<h2 class="anchored" data-anchor-id="syntax">2 Syntax</h2>
+<h2 data-anchor-id="syntax">2 Syntax</h2>
 <section id="variable-names" class="level3">
-<h3 class="anchored" data-anchor-id="variable-names">2.1 Variable names</h3>
+<h3 data-anchor-id="variable-names">2.1 Variable names</h3>
 <p>Stata has rules for variable names:</p>
 <ul>
 <li>Names can only contain letters, digits, and underscores (<code>_</code>)</li>
@@ -175,10 +179,10 @@ stuff.do</code></pre>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>_1_day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="spacing" class="level3">
-<h3 class="anchored" data-anchor-id="spacing">2.2 Spacing</h3>
+<h3 data-anchor-id="spacing">2.2 Spacing</h3>
 <p>The spacebar is your friend! Putting spaces in your code makes it more readable and easier to understand, both for others and for your future self.</p>
 <section id="operators" class="level4">
-<h4 class="anchored" data-anchor-id="operators">2.2.1 Operators</h4>
+<h4 data-anchor-id="operators">2.2.1 Operators</h4>
 <p>Most operators (<code>+</code>, <code>-</code>, <code>=</code>, <code>==</code>, <code>&lt;</code>, <code>&lt;=</code>, etc.) should have spaces on both sides.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">test</span> = 1</span>
@@ -198,7 +202,7 @@ stuff.do</code></pre>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> fruit=<span class="st">"apple"</span> <span class="kw">if</span> fruit!=<span class="st">"banana"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="parentheses" class="level4">
-<h4 class="anchored" data-anchor-id="parentheses">2.2.2 Parentheses</h4>
+<h4 data-anchor-id="parentheses">2.2.2 Parentheses</h4>
 <p>Do not put spaces inside or outside parentheses for function calls.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span>(lexp)</span>
@@ -208,7 +212,7 @@ stuff.do</code></pre>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span>( lexp )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="commas" class="level4">
-<h4 class="anchored" data-anchor-id="commas">2.2.3 Commas</h4>
+<h4 data-anchor-id="commas">2.2.3 Commas</h4>
 <p>Always put a space after a comma, never before, just like in regular English.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span>, <span class="ot">row</span></span>
@@ -219,7 +223,7 @@ stuff.do</code></pre>
 </section>
 </section>
 <section id="loops" class="level3">
-<h3 class="anchored" data-anchor-id="loops">2.3 Loops</h3>
+<h3 data-anchor-id="loops">2.3 Loops</h3>
 <p>Try to avoid repeating yourself when writing code. If you find yourself cut and pasting a single line multiple times, consider if it’s possible to use a loop.</p>
 <p>It’s much easier to make changes to code that uses loops, than when lines are repeated multiple times with small alterations.</p>
 <p>When writing loops, put the <code>for</code> statement on its own line with a space before the <code>{</code> and then indent the code in the loop before closing the loop with the <code>}</code> on its own line.</p>
@@ -238,7 +242,7 @@ stuff.do</code></pre>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="commands" class="level3">
-<h3 class="anchored" data-anchor-id="commands">2.4 Commands</h3>
+<h3 data-anchor-id="commands">2.4 Commands</h3>
 <p>Stata doesn’t require you to type the full name of a command (ie. <code>generate</code>, <code>gen</code>, and <code>g</code> are all legal ways to invoke the <code>generate</code> command).</p>
 <p>There is a tradeoff here between typing ease, readability, and Stata conventions. It’s annoying to type the full name for some commands (especially frequently used ones), but cutting the name too short hurts readability.</p>
 <p>To balance this tradeoff, use <strong>at least 3 characters</strong> of a command’s name and strongly consider using the full name for less common commands.</p>
@@ -255,19 +259,19 @@ stuff.do</code></pre>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>ta foo <span class="bn">bar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="comments" class="level3">
-<h3 class="anchored" data-anchor-id="comments">2.5 Comments</h3>
+<h3 data-anchor-id="comments">2.5 Comments</h3>
 <p>Comments should describe <em>why</em> you are writing a particular piece of code that needs additional explanation, not <em>how</em> the code works. The code itself explains the <em>how</em> but commenting the <em>why</em> (especially if doing something non-standard) is most useful for another person or your future self.</p>
 <p>When using comments to record notes on the analysis, don’t just rely on adding dates, be proactive on removing comments once the code changes and the comment is no longer relavent.</p>
 <p><strong>But strongly consider using <a href="https://www.stata.com/features/overview/markdown/"><code>dyndoc</code> (Stata markdown)</a> for analysis notes.</strong> This format combines both code, output, and explanation text in one document that makes it much easier to understand what’s happening than code comments and a log file.</p>
 <section id="single-line-comments" class="level4">
-<h4 class="anchored" data-anchor-id="single-line-comments">2.5.1 Single-line comments</h4>
+<h4 data-anchor-id="single-line-comments">2.5.1 Single-line comments</h4>
 <p>Use <code>//</code> instead of <code>*</code> for line comments. While you can start a line comment with <code>*</code> in Stata, it’s not a good idea because it’s too easily confused with multiplication.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>* Bad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="multi-line-comments" class="level4">
-<h4 class="anchored" data-anchor-id="multi-line-comments">2.5.2 Multi-line comments</h4>
+<h4 data-anchor-id="multi-line-comments">2.5.2 Multi-line comments</h4>
 <p>Use <code>/*</code> and <code>*/</code> for multi-line comments</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -291,7 +295,7 @@ stuff.do</code></pre>
 </section>
 </section>
 <section id="semicolons" class="level3">
-<h3 class="anchored" data-anchor-id="semicolons">2.6 Semicolons</h3>
+<h3 data-anchor-id="semicolons">2.6 Semicolons</h3>
 <p>Unless you have a good reason don’t use semicolons (<code>;</code>) to denote line ends. Most of the time you should use the line continuation operator (<code>///</code>) if your command needs to stretch over more than one line.</p>
 <p>And never use semicolons to put multiple commands on one line.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
@@ -315,7 +319,7 @@ stuff.do</code></pre>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>#delimit <span class="kw">cr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="long-lines" class="level3">
-<h3 class="anchored" data-anchor-id="long-lines">2.7 Long lines</h3>
+<h3 data-anchor-id="long-lines">2.7 Long lines</h3>
 <p>Try to keep individual lines of code to 80 characters. This is a standard across many languages that makes it easier to read and review code.</p>
 </section>
 </section>
@@ -342,13 +346,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -559,4 +556,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="stata-style-guide_files/libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
