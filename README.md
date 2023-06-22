@@ -1,19 +1,17 @@
-BHHI Stata Style Guide
-================
+# BHHI Stata Style Guide
 Eve Perry
 
--   <a href="#files" id="toc-files">1. Files</a>
-    -   <a href="#names" id="toc-names">1.1 Names</a>
-    -   <a href="#internal-structure" id="toc-internal-structure">1.2 Internal
-        structure</a>
--   <a href="#syntax" id="toc-syntax">2 Syntax</a>
-    -   <a href="#variable-names" id="toc-variable-names">2.1 Variable names</a>
-    -   <a href="#spacing" id="toc-spacing">2.2 Spacing</a>
-    -   <a href="#loops" id="toc-loops">2.3 Loops</a>
-    -   <a href="#commands" id="toc-commands">2.4 Commands</a>
-    -   <a href="#comments" id="toc-comments">2.5 Comments</a>
-    -   <a href="#semicolons" id="toc-semicolons">2.6 Semicolons</a>
-    -   <a href="#long-lines" id="toc-long-lines">2.7 Long lines</a>
+- [1. Files](#files)
+  - [1.1 Names](#names)
+  - [1.2 Internal structure](#internal-structure)
+- [2 Syntax](#syntax)
+  - [2.1 Variable names](#variable-names)
+  - [2.2 Spacing](#spacing)
+  - [2.3 Loops](#loops)
+  - [2.4 Commands](#commands)
+  - [2.5 Comments](#comments)
+  - [2.6 Semicolons](#semicolons)
+  - [2.7 Long lines](#long-lines)
 
 This is the BHHI guide to writing Stata code. Its goal is to create
 consistency in our code and to make our code more readable and
@@ -31,16 +29,14 @@ modifications for the Stata language.
 File names should be meaningful and end in .do. Avoid using special
 characters in file names - stick with numbers, letters, -, and \_.
 
-``` code
-// Good
-fit_models.do
-clean_data.do
+    // Good
+    fit_models.do
+    clean_data.do
 
-// Bad
-fit models.do
-foo.do
-stuff.do
-```
+    // Bad
+    fit models.do
+    foo.do
+    stuff.do
 
 If files should be run in a particular order, prefix them with numbers.
 If it seems likely you’ll have more than 10 files, left pad with zero:
@@ -83,16 +79,16 @@ files or packages installed.
 
 Stata has rules for variable names:
 
--   Names can only contain letters, digits, and underscores (`_`)
--   Names can only begin with a letter or `_`
--   Names can only be 32 characters long
+- Names can only contain letters, digits, and underscores (`_`)
+- Names can only begin with a letter or `_`
+- Names can only be 32 characters long
 
 We have a few additional standards for variable names:
 
--   Only use lowercase letters, numbers, and `_`
--   Use `_` to separate words within a name
--   Avoid starting variable names with an `_` (because these are
-    typically used for built-in variables)
+- Only use lowercase letters, numbers, and `_`
+- Use `_` to separate words within a name
+- Avoid starting variable names with an `_` (because these are typically
+  used for built-in variables)
 
 ``` stata
 // Good
