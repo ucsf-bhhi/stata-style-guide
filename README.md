@@ -1,5 +1,4 @@
 # BHHI Stata Style Guide
-Eve Perry
 
 - [1. Files](#files)
   - [1.1 Names](#names)
