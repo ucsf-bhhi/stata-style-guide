@@ -3,6 +3,9 @@ project:
     - stata-style-guide.qmd
 format:
   bhhi-quarto-html: 
+    toc: true
+    toc-expand: 2
+    toc-depth: 5
     format-links: false
   gfm:
      output-file: README.md

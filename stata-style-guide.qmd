@@ -1,6 +1,5 @@
 ---
 title: BHHI Stata Style Guide
-toc: true
 format: 
   bhhi-quarto-html: default
   gfm: default
@@ -9,9 +8,9 @@ This is the BHHI guide to writing Stata code. Its goal is to create consistency 
 
 The guide draws heavily on the [R Tidyverse style guide](https://style.tidyverse.org/) by Hadley Wickham ([license](https://creativecommons.org/licenses/by-sa/3.0/)), with modifications for the Stata language.
 
-## 1. Files
+## Files
 
-### 1.1 Names
+### Names
 
 File names should be meaningful and end in .do. Avoid using special characters in file names - stick with numbers, letters, -, and _.
 
@@ -40,7 +39,7 @@ If you later realise that you’ve missed some steps, it’s tempting to use 02a
 
 Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.
 
-### 1.2 File paths
+### File paths
 
 **Always use relative file paths** in code instead of absolute file paths. Relative file paths are, as the name suggests, relative to the current working directory. Relative file paths look like `data/example_dataset.dta` whereas an absolute path is something like `Y:\example_project\data\example_dataset.dta` on Windows or `/Users/Eve/example_project/data/example_dataset.dta` on a Mac.
 
@@ -52,7 +51,7 @@ Relative paths assume that Stata's working directory is the root of the project 
 
 On the same note, your code in a do file should never change the working directory. It's rude to mess with someone else's working setup and is likely to cause path compatibility problems. If you find yourself using `cd` in your code, there's probably another way to accomplish what you're trying to do that doesn't involve changing the working directory.
 
-#### 1.2.1 Absolute file paths
+#### Absolute file paths
 
 There is one situation where we need to use absolute file paths: shared data resources. These are datasets used across multiple projects or analyses that need to live in one place. In these cases, the data won't be in the project directory so we can't use a relative path. A good example are the Statewide Survey datasets.
 
@@ -74,7 +73,7 @@ On Windows, it's location probably looks like this: `C:\Users\eve\profile.do`
 
 On Mac, it's location probably looks like this: `/Users/eve/profile.do`
 
-###### 1.2.1.1 Setting the environment variable on Windows
+##### Setting the environmental variable
 
 1. Hit the Start button and type in "environment variable":
 2. Click 'Edit environmental variables for your account'
@@ -84,7 +83,7 @@ On Mac, it's location probably looks like this: `/Users/eve/profile.do`
 
 
 
-### 1.3 Internal structure
+### Internal structure
 
 Use commented lines of - and = to break up your file into easily readable chunks.
 
@@ -96,9 +95,9 @@ Use commented lines of - and = to break up your file into easily readable chunks
 
 If your script uses external `.ado` files or packages, note their use in a comment at the top of the file so others can ensure they have those files or packages installed.
 
-## 2 Syntax
+## Syntax
 
-### 2.1 Variable names
+### Variable names
 
 Stata has rules for variable names:
 
@@ -123,11 +122,11 @@ dayone
 _1_day
 ```
 
-### 2.2 Spacing
+### Spacing
 
 The spacebar is your friend! Putting spaces in your code makes it more readable and easier to understand, both for others and for your future self.
 
-#### 2.2.1 Operators
+#### Operators
 
 Most operators (`+`, `-`, `=`, `==`, `<`, `<=`, etc.) should have spaces on both sides.
 
@@ -150,7 +149,7 @@ gen variable_high if variable>1000
 replace fruit="apple" if fruit!="banana"
 ```
 
-#### 2.2.2 Parentheses
+#### Parentheses
 
 Do not put spaces inside or outside parentheses for function calls.
 
@@ -163,7 +162,7 @@ egen mean = mean (lexp)
 egen mean = mean( lexp )
 ```
 
-#### 2.2.3 Commas
+#### Commas
 
 Always put a space after a comma, never before, just like in regular English.
 
@@ -176,7 +175,7 @@ tab foo bar,row
 tab foo bar , row
 ```
 
-### 2.3 Loops
+### Loops
 
 Try to avoid repeating yourself when writing code. If you find yourself cut and pasting a single line multiple times, consider if it's possible to use a loop. 
 
@@ -200,7 +199,7 @@ replace `var' = `var' + 1
 }
 ```
 
-### 2.4 Commands
+### Commands
 
 Stata doesn't require you to type the full name of a command (ie. `generate`, `gen`, and `g` are all legal ways to invoke the `generate` command).
 
@@ -222,7 +221,7 @@ g foo = 1
 ta foo bar
 ```
 
-### 2.5 Comments
+### Comments
 
 Comments should describe *why* you are writing a particular piece of code that needs additional explanation, not *how* the code works. The code itself explains the *how* but commenting the *why* (especially if doing something non-standard) is most useful for another person or your future self.
 
@@ -230,7 +229,7 @@ When using comments to record notes on the analysis, don't just rely on adding d
 
 **But strongly consider using [`dyndoc` (Stata markdown)](https://www.stata.com/features/overview/markdown/) for analysis notes.** This format combines both code, output, and explanation text in one document that makes it much easier to understand what's happening than code comments and a log file.
 
-#### 2.5.1 Single-line comments
+#### Single-line comments
 
 Use `//` instead of `*` for line comments. While you can start a line comment with `*` in Stata, it's not a good idea because it's too easily confused with multiplication.
 
@@ -240,7 +239,7 @@ Use `//` instead of `*` for line comments. While you can start a line comment wi
 * Bad
 ```
 
-#### 2.5.2 Multi-line comments
+#### Multi-line comments
 
 Use `/*` and `*/` for multi-line comments
 
@@ -266,7 +265,7 @@ comment
 */
 ```
 
-### 2.6 Semicolons
+### Semicolons
 
 Unless you have a good reason don't use semicolons (`;`) to denote line ends. Most of the time you should use the line continuation operator (`///`) if your command needs to stretch over more than one line.
 
@@ -294,6 +293,6 @@ tabstat variable_1 variable_2 variable_3
 #delimit cr
 ```
 
-### 2.7 Long lines
+### Long lines
 
 Try to keep individual lines of code to 80 characters. This is a standard across many languages that makes it easier to read and review code.
