@@ -91,25 +91,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">1. Files</a>
+  <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">Files</a>
+  <ul>
+  <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names">Names</a></li>
+  <li><a href="#file-paths" id="toc-file-paths" class="nav-link" data-scroll-target="#file-paths">File paths</a>
+  <ul>
+  <li><a href="#absolute-file-paths" id="toc-absolute-file-paths" class="nav-link" data-scroll-target="#absolute-file-paths">Absolute file paths</a>
   <ul class="collapse">
-  <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names">1.1 Names</a></li>
-  <li><a href="#file-paths" id="toc-file-paths" class="nav-link" data-scroll-target="#file-paths">1.2 File paths</a></li>
-  <li><a href="#internal-structure" id="toc-internal-structure" class="nav-link" data-scroll-target="#internal-structure">1.3 Internal structure</a></li>
+  <li><a href="#setting-the-environmental-variable" id="toc-setting-the-environmental-variable" class="nav-link" data-scroll-target="#setting-the-environmental-variable">Setting the environmental variable</a></li>
   </ul></li>
-  <li><a href="#syntax" id="toc-syntax" class="nav-link" data-scroll-target="#syntax">2 Syntax</a>
-  <ul class="collapse">
-  <li><a href="#variable-names" id="toc-variable-names" class="nav-link" data-scroll-target="#variable-names">2.1 Variable names</a></li>
-  <li><a href="#spacing" id="toc-spacing" class="nav-link" data-scroll-target="#spacing">2.2 Spacing</a></li>
-  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">2.3 Loops</a></li>
-  <li><a href="#commands" id="toc-commands" class="nav-link" data-scroll-target="#commands">2.4 Commands</a></li>
-  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">2.5 Comments</a></li>
-  <li><a href="#semicolons" id="toc-semicolons" class="nav-link" data-scroll-target="#semicolons">2.6 Semicolons</a></li>
-  <li><a href="#long-lines" id="toc-long-lines" class="nav-link" data-scroll-target="#long-lines">2.7 Long lines</a></li>
+  </ul></li>
+  <li><a href="#internal-structure" id="toc-internal-structure" class="nav-link" data-scroll-target="#internal-structure">Internal structure</a></li>
+  </ul></li>
+  <li><a href="#syntax" id="toc-syntax" class="nav-link" data-scroll-target="#syntax">Syntax</a>
+  <ul>
+  <li><a href="#variable-names" id="toc-variable-names" class="nav-link" data-scroll-target="#variable-names">Variable names</a></li>
+  <li><a href="#spacing" id="toc-spacing" class="nav-link" data-scroll-target="#spacing">Spacing</a>
+  <ul>
+  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators">Operators</a></li>
+  <li><a href="#parentheses" id="toc-parentheses" class="nav-link" data-scroll-target="#parentheses">Parentheses</a></li>
+  <li><a href="#commas" id="toc-commas" class="nav-link" data-scroll-target="#commas">Commas</a></li>
+  </ul></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a></li>
+  <li><a href="#commands" id="toc-commands" class="nav-link" data-scroll-target="#commands">Commands</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a>
+  <ul>
+  <li><a href="#single-line-comments" id="toc-single-line-comments" class="nav-link" data-scroll-target="#single-line-comments">Single-line comments</a></li>
+  <li><a href="#multi-line-comments" id="toc-multi-line-comments" class="nav-link" data-scroll-target="#multi-line-comments">Multi-line comments</a></li>
+  </ul></li>
+  <li><a href="#semicolons" id="toc-semicolons" class="nav-link" data-scroll-target="#semicolons">Semicolons</a></li>
+  <li><a href="#long-lines" id="toc-long-lines" class="nav-link" data-scroll-target="#long-lines">Long lines</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -124,9 +139,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is the BHHI guide to writing Stata code. Its goal is to create consistency in our code and to make our code more readable and understandable for each other and for our future selves.</p>
 <p>The guide draws heavily on the <a href="https://style.tidyverse.org/">R Tidyverse style guide</a> by Hadley Wickham (<a href="https://creativecommons.org/licenses/by-sa/3.0/">license</a>), with modifications for the Stata language.</p>
 <section id="files" class="level2">
-<h2 data-anchor-id="files">1. Files</h2>
+<h2 data-anchor-id="files">Files</h2>
 <section id="names" class="level3">
-<h3 data-anchor-id="names">1.1 Names</h3>
+<h3 data-anchor-id="names">Names</h3>
 <p>File names should be meaningful and end in .do. Avoid using special characters in file names - stick with numbers, letters, -, and _.</p>
 <pre><code>// Good
 fit_models.do
@@ -146,48 +161,90 @@ stuff.do</code></pre>
 <p>Pay attention to capitalization, since you, or some of your collaborators, might be using an operating system with a case-insensitive file system (e.g., Microsoft Windows or OS X) which can lead to problems with (case-sensitive) revision control systems. Prefer file names that are all lower case, and never have names that differ only in their capitalization.</p>
 </section>
 <section id="file-paths" class="level3">
-<h3 data-anchor-id="file-paths">1.2 File paths</h3>
+<h3 data-anchor-id="file-paths">File paths</h3>
 <p><strong>Always use relative file paths</strong> in code instead of absolute file paths. Relative file paths are, as the name suggests, relative to the current working directory. Relative file paths look like <code>data/example_dataset.dta</code> whereas an absolute path is something like <code>Y:\example_project\data\example_dataset.dta</code> on Windows or <code>/Users/Eve/example_project/data/example_dataset.dta</code> on a Mac.</p>
 <p>The only exception is shared resources like datasets used across multiple projects or analyses (eg. the Statewide Survey dataset).</p>
 <p>We avoid absolute file paths, people on different operating systems will have trouble running code with absolute paths. If you are on a Mac, there’s no way to setup your system to be compatible with Windows and vice versa. Also, sometimes you move project directories, and if your code has absolute paths, you’ll have to change each on to get the code working again.</p>
 <p>Relative paths assume that Stata’s working directory is the root of the project directory and it is the person running the code’s responsibility to make sure they are in the correct working directory. With relative paths code can be shared across operating systems and be moved without major headaches and bugs.</p>
 <p>On the same note, your code in a do file should never change the working directory. It’s rude to mess with someone else’s working setup and is likely to cause path compatibility problems. If you find yourself using <code>cd</code> in your code, there’s probably another way to accomplish what you’re trying to do that doesn’t involve changing the working directory.</p>
 <section id="absolute-file-paths" class="level4">
-<h4 data-anchor-id="absolute-file-paths">1.2.1 Absolute file paths</h4>
+<h4 data-anchor-id="absolute-file-paths">Absolute file paths</h4>
 <p>There is one situation where we need to use absolute file paths: shared data resources. These are datasets used across multiple projects or analyses that need to live in one place. In these cases, the data won’t be in the project directory so we can’t use a relative path. A good example are the Statewide Survey datasets.</p>
 <p>We still want our code to work across operating systems (we’re already writing and sharing code that runs on Windows, MacOS, and Linux!), so even when we use absolute paths we need to be careful to preserve OS portability.</p>
-<p>We use operating system environmental variables to accomplish this. All operating systems (at least the ones we use) support environmental variables and they store a string in a named variable. So we individual set the path to our shared drive as an environmental variable and then in our code reference the environmental variable to get to the shared drive. This allows the paths to work across operating systems and doesn’t require us to have the same shared drive setup.</p>
+<p>We use operating system environmental variables to accomplish this. All operating systems (at least the ones we use) support environmental variables and they store a string in a named variable. So we individually set the path to our shared drive as an environmental variable and then in our code reference the environmental variable to get to the shared drive. This allows the paths to work across operating systems and doesn’t require us to have the same shared drive setup.</p>
 <p>To make things easy we standardize the name of the environmental variable and load the path to the shared drive into a Stata global variable, which is easier to use in code. We call the environmental variable <code>SHARED_DRIVE</code> and set it in the global variable <code>${shared_drive}</code>. Here’s the code snippet:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> shared_drive : env SHARED_DRIVE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Add this line your <code>profile.do</code> file and it will run everytime you start Stata and the <code>${shared_drive}</code> global variable will always be available for you.</p>
+<p>Add this line your <code>profile.do</code> file and it will run everytime you start Stata and the <code>${shared_drive}</code> global variable will always be available for you. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"${shared_drive}/statewide_survey_processed_data/latest/statewide_survey_processed.dta"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>profile.do</code> file needs to live in your home directory so Stata can find it. If you don’t already have a <code>profile.do</code> file (it’s not created by default) just add it yourself.</p>
 <p>On Windows, it’s location probably looks like this: <code>C:\Users\eve\profile.do</code></p>
 <p>On Mac, it’s location probably looks like this: <code>/Users/eve/profile.do</code></p>
-<section id="setting-the-environment-variable-on-windows" class="level6">
-<h6 data-anchor-id="setting-the-environment-variable-on-windows">1.2.1.1 Setting the environment variable on Windows</h6>
+<section id="setting-the-environmental-variable" class="level5">
+<h5 data-anchor-id="setting-the-environmental-variable">Setting the environmental variable</h5>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Windows
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li>Hit the Start button and type in “environment variable”:</li>
-<li>Click ‘Edit environmental variables for your account’</li>
-<li>Click ‘New’ in the upper panel.</li>
-<li>Enter <code>SHARED_DRIVE</code> in the Variable Name field and the path to the <code>Research\BHHI</code> folder on the shared drive (ie. <code>Y:/Research/BHHI</code>) in the Variable Value field. Then click OK.</li>
-<li>Click OK in the bottom right of the window.</li>
+<li>Hit the Windows key or button and type “environment variable”.</li>
 </ol>
+<p><img src="img/environmental_variables/step_1.png" class="img-fluid" style="width:25.0%"></p>
+<ol start="2" type="1">
+<li><p>Click ‘Edit environmental variables for your account’.</p>
+<p><img src="img/environmental_variables/step_2.png" class="img-fluid" style="width:25.0%"></p></li>
+<li><p>Click ‘New’ in the upper panel.</p>
+<p><img src="img/environmental_variables/step_3.png" class="img-fluid" style="width:50.0%"></p></li>
+<li><p>Enter <code>SHARED_DRIVE</code> in the Variable Name field and the path to the <code>Research\BHHI</code> folder on the shared drive (ie. <code>Y:/Research/BHHI</code>) in the Variable Value field. Then click OK.</p>
+<p><img src="img/environmental_variables/step_4.png" class="img-fluid" style="width:75.0%"></p></li>
+<li><p>Click OK in the bottom right of the window.</p>
+<p><img src="img/environmental_variables/step_5.png" class="img-fluid" style="width:50.0%"></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+MacOS
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open or create the <code>~/.zshenv</code> file in a text editor.</li>
+<li>Add the following line (replacing <code>PATH TO SHARED DRIVE</code> as appropriate): <code>export SHARED_DRIVE="PATH TO SHARED DRIVE"</code></li>
+</ol>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
 <section id="internal-structure" class="level3">
-<h3 data-anchor-id="internal-structure">1.3 Internal structure</h3>
+<h3 data-anchor-id="internal-structure">Internal structure</h3>
 <p>Use commented lines of - and = to break up your file into easily readable chunks.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Load data ---------------------------</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Plot data ---------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Load data ---------------------------</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Plot data ---------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If your script uses external <code>.ado</code> files or packages, note their use in a comment at the top of the file so others can ensure they have those files or packages installed.</p>
 </section>
 </section>
 <section id="syntax" class="level2">
-<h2 data-anchor-id="syntax">2 Syntax</h2>
+<h2 data-anchor-id="syntax">Syntax</h2>
 <section id="variable-names" class="level3">
-<h3 data-anchor-id="variable-names">2.1 Variable names</h3>
+<h3 data-anchor-id="variable-names">Variable names</h3>
 <p>Stata has rules for variable names:</p>
 <ul>
 <li>Names can only contain letters, digits, and underscores (<code>_</code>)</li>
@@ -200,157 +257,157 @@ stuff.do</code></pre>
 <li>Use <code>_</code> to separate words within a name</li>
 <li>Avoid starting variable names with an <code>_</code> (because these are typically used for built-in variables)</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>day_one</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>day_1</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>DayOne</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>dayone</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>_1_day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>day_one</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>day_1</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>DayOne</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dayone</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>_1_day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="spacing" class="level3">
-<h3 data-anchor-id="spacing">2.2 Spacing</h3>
+<h3 data-anchor-id="spacing">Spacing</h3>
 <p>The spacebar is your friend! Putting spaces in your code makes it more readable and easier to understand, both for others and for your future self.</p>
 <section id="operators" class="level4">
-<h4 data-anchor-id="operators">2.2.1 Operators</h4>
+<h4 data-anchor-id="operators">Operators</h4>
 <p>Most operators (<code>+</code>, <code>-</code>, <code>=</code>, <code>==</code>, <code>&lt;</code>, <code>&lt;=</code>, etc.) should have spaces on both sides.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">test</span> = 1</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> addition = foo + <span class="bn">bar</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> variable_high <span class="kw">if</span> <span class="kw">variable</span> &gt; 1000</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> fruit = <span class="st">"apple"</span> <span class="kw">if</span> fruit != <span class="st">"banana"</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">test</span>=1</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> addition = foo+<span class="bn">bar</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> variable_high <span class="kw">if</span> <span class="kw">variable</span>&gt;1000</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> fruit=<span class="st">"apple"</span> <span class="kw">if</span> fruit!=<span class="st">"banana"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">test</span> = 1</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> addition = foo + <span class="bn">bar</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> variable_high <span class="kw">if</span> <span class="kw">variable</span> &gt; 1000</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> fruit = <span class="st">"apple"</span> <span class="kw">if</span> fruit != <span class="st">"banana"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">test</span>=1</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> addition = foo+<span class="bn">bar</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> variable_high <span class="kw">if</span> <span class="kw">variable</span>&gt;1000</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> fruit=<span class="st">"apple"</span> <span class="kw">if</span> fruit!=<span class="st">"banana"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="parentheses" class="level4">
-<h4 data-anchor-id="parentheses">2.2.2 Parentheses</h4>
+<h4 data-anchor-id="parentheses">Parentheses</h4>
 <p>Do not put spaces inside or outside parentheses for function calls.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span>(lexp)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span> (lexp)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span>( lexp )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="commas" class="level4">
-<h4 data-anchor-id="commas">2.2.3 Commas</h4>
-<p>Always put a space after a comma, never before, just like in regular English.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span>, <span class="ot">row</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span>(lexp)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span>,<span class="ot">row</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span> , <span class="ot">row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span> (lexp)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="kw">mean</span> = <span class="kw">mean</span>( lexp )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="commas" class="level4">
+<h4 data-anchor-id="commas">Commas</h4>
+<p>Always put a space after a comma, never before, just like in regular English.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span>, <span class="ot">row</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span>,<span class="ot">row</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span> , <span class="ot">row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="loops" class="level3">
-<h3 data-anchor-id="loops">2.3 Loops</h3>
+<h3 data-anchor-id="loops">Loops</h3>
 <p>Try to avoid repeating yourself when writing code. If you find yourself cut and pasting a single line multiple times, consider if it’s possible to use a loop.</p>
 <p>It’s much easier to make changes to code that uses loops, than when lines are repeated multiple times with small alterations.</p>
 <p>When writing loops, put the <code>for</code> statement on its own line with a space before the <code>{</code> and then indent the code in the loop before closing the loop with the <code>}</code> on its own line.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> foo <span class="bn">bar</span> biz {</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">replace</span> <span class="ot">`var'</span> = <span class="ot">`var'</span> + 1</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> foo = foo + 1</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="bn">bar</span> = <span class="bn">bar</span> + 1</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> biz = biz + 1</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> foo <span class="bn">bar</span> biz{</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="ot">`var'</span> = <span class="ot">`var'</span> + 1</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> foo <span class="bn">bar</span> biz {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">replace</span> <span class="ot">`var'</span> = <span class="ot">`var'</span> + 1</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> foo = foo + 1</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="bn">bar</span> = <span class="bn">bar</span> + 1</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> biz = biz + 1</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> foo <span class="bn">bar</span> biz{</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="ot">`var'</span> = <span class="ot">`var'</span> + 1</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="commands" class="level3">
-<h3 data-anchor-id="commands">2.4 Commands</h3>
+<h3 data-anchor-id="commands">Commands</h3>
 <p>Stata doesn’t require you to type the full name of a command (ie. <code>generate</code>, <code>gen</code>, and <code>g</code> are all legal ways to invoke the <code>generate</code> command).</p>
 <p>There is a tradeoff here between typing ease, readability, and Stata conventions. It’s annoying to type the full name for some commands (especially frequently used ones), but cutting the name too short hurts readability.</p>
 <p>To balance this tradeoff, use <strong>at least 3 characters</strong> of a command’s name and strongly consider using the full name for less common commands.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> foo = 1</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> foo = 1</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> foo <span class="bn">bar</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>g foo = 1</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>ta foo <span class="bn">bar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> foo = 1</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> foo = 1</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> foo <span class="bn">bar</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> foo <span class="bn">bar</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>g foo = 1</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>ta foo <span class="bn">bar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="comments" class="level3">
-<h3 data-anchor-id="comments">2.5 Comments</h3>
+<h3 data-anchor-id="comments">Comments</h3>
 <p>Comments should describe <em>why</em> you are writing a particular piece of code that needs additional explanation, not <em>how</em> the code works. The code itself explains the <em>how</em> but commenting the <em>why</em> (especially if doing something non-standard) is most useful for another person or your future self.</p>
 <p>When using comments to record notes on the analysis, don’t just rely on adding dates, be proactive on removing comments once the code changes and the comment is no longer relavent.</p>
 <p><strong>But strongly consider using <a href="https://www.stata.com/features/overview/markdown/"><code>dyndoc</code> (Stata markdown)</a> for analysis notes.</strong> This format combines both code, output, and explanation text in one document that makes it much easier to understand what’s happening than code comments and a log file.</p>
 <section id="single-line-comments" class="level4">
-<h4 data-anchor-id="single-line-comments">2.5.1 Single-line comments</h4>
+<h4 data-anchor-id="single-line-comments">Single-line comments</h4>
 <p>Use <code>//</code> instead of <code>*</code> for line comments. While you can start a line comment with <code>*</code> in Stata, it’s not a good idea because it’s too easily confused with multiplication.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>* Bad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="multi-line-comments" class="level4">
-<h4 data-anchor-id="multi-line-comments">2.5.2 Multi-line comments</h4>
-<p>Use <code>/*</code> and <code>*/</code> for multi-line comments</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">* Multi</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">* line</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">* comment</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Multi</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">// line</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">// comment</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">Multi</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">line</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">comment</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>* Bad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="multi-line-comments" class="level4">
+<h4 data-anchor-id="multi-line-comments">Multi-line comments</h4>
+<p>Use <code>/*</code> and <code>*/</code> for multi-line comments</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">* Multi</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">* line</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">* comment</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Multi</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">// line</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">// comment</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">Multi</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">line</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">comment</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="semicolons" class="level3">
-<h3 data-anchor-id="semicolons">2.6 Semicolons</h3>
+<h3 data-anchor-id="semicolons">Semicolons</h3>
 <p>Unless you have a good reason don’t use semicolons (<code>;</code>) to denote line ends. Most of the time you should use the line continuation operator (<code>///</code>) if your command needs to stretch over more than one line.</p>
 <p>And never use semicolons to put multiple commands on one line.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> one = 1</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">two</span> = 2</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> variable_1 variable_2 variable_3 <span class="co">///</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  variable_4 variable_5 variable_6, <span class="kw">stats</span>(<span class="kw">mean</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> one = 1;</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">two</span> = 2;</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> three = 3; <span class="kw">gen</span> four = 4;</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Avoid</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> variable_1 variable_2 variable_3 </span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  variable_4 variable_5 variable_6, <span class="kw">stats</span>(<span class="kw">mean</span>);</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>#delimit <span class="kw">cr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Good</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> one = 1</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">two</span> = 2</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> variable_1 variable_2 variable_3 <span class="co">///</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  variable_4 variable_5 variable_6, <span class="kw">stats</span>(<span class="kw">mean</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> one = 1;</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">two</span> = 2;</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> three = 3; <span class="kw">gen</span> four = 4;</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Avoid</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> variable_1 variable_2 variable_3 </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  variable_4 variable_5 variable_6, <span class="kw">stats</span>(<span class="kw">mean</span>);</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>#delimit <span class="kw">cr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="long-lines" class="level3">
-<h3 data-anchor-id="long-lines">2.7 Long lines</h3>
+<h3 data-anchor-id="long-lines">Long lines</h3>
 <p>Try to keep individual lines of code to 80 characters. This is a standard across many languages that makes it easier to read and review code.</p>
 </section>
 </section>
