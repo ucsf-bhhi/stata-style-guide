@@ -59,13 +59,13 @@ We still want our code to work across operating systems (we're already writing a
 
 We use operating system environmental variables to accomplish this. All operating systems (at least the ones we use) support environmental variables and they store a string in a named variable. So we individually set the path to our shared drive as an environmental variable and then in our code reference the environmental variable to get to the shared drive. This allows the paths to work across operating systems and doesn't require us to have the same shared drive setup.
 
-To make things easy we standardize the name of the environmental variable and load the path to the shared drive into a Stata global variable, which is easier to use in code. We call the environmental variable `SHARED_DRIVE` and set it in the global variable `${shared_drive}`. Here's the code snippet:
+To make things easy we standardize the name of the environmental variable and load the path to the shared drive into a Stata global variable, which is easier to use in code. We call the environmental variable `BHHI_SHARED_DRIVE` and set it in the global variable `${bhhi_shared_drive}`. Here's the code snippet:
 
 ```stata
 global bhhi_shared_drive : env BHHI_SHARED_DRIVE
 ```
 
-Add this line your `profile.do` file and it will run everytime you start Stata and the `${shared_drive}` global variable will always be available for you. For example:
+Add this line your `profile.do` file and it will run everytime you start Stata and the `${bhhi_shared_drive}` global variable will always be available for you. For example:
 
 ```stata
 use "${bhhi_shared_drive}/statewide_survey_processed_data/latest/statewide_survey_processed.dta"
