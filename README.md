@@ -10,7 +10,9 @@ guide](https://style.tidyverse.org/) by Hadley Wickham
 modifications for the Stata language.
 
 ## Files
+## Files
 
+### Names
 ### Names
 
 File names should be meaningful and end in .do. Avoid using special
@@ -46,6 +48,7 @@ file names that are all lower case, and never have names that differ
 only in their capitalization.
 
 ### File paths
+### File paths
 
 **Always use relative file paths** in code instead of absolute file
 paths. Relative file paths are, as the name suggests, relative to the
@@ -77,6 +80,7 @@ likely to cause path compatibility problems. If you find yourself using
 you’re trying to do that doesn’t involve changing the working directory.
 
 #### Absolute file paths
+#### Absolute file paths
 
 There is one situation where we need to use absolute file paths: shared
 data resources. These are datasets used across multiple projects or
@@ -91,6 +95,11 @@ portability.
 
 We use operating system environmental variables to accomplish this. All
 operating systems (at least the ones we use) support environmental
+variables and they store a string in a named variable. So we
+individually set the path to our shared drive as an environmental
+variable and then in our code reference the environmental variable to
+get to the shared drive. This allows the paths to work across operating
+systems and doesn’t require us to have the same shared drive setup.
 variables and they store a string in a named variable. So we
 individually set the path to our shared drive as an environmental
 variable and then in our code reference the environmental variable to
@@ -163,7 +172,9 @@ On Mac, it’s location probably looks like this: `/Users/eve/profile.do`
 >     appropriate): `export BHHI_SHARED_DRIVE="PATH TO SHARED DRIVE"`
 
 </div>
+</div>
 
+### Internal structure
 ### Internal structure
 
 Use commented lines of - and = to break up your file into easily
@@ -180,7 +191,9 @@ a comment at the top of the file so others can ensure they have those
 files or packages installed.
 
 ## Syntax
+## Syntax
 
+### Variable names
 ### Variable names
 
 Stata has rules for variable names:
@@ -208,11 +221,13 @@ _1_day
 ```
 
 ### Spacing
+### Spacing
 
 The spacebar is your friend! Putting spaces in your code makes it more
 readable and easier to understand, both for others and for your future
 self.
 
+#### Operators
 #### Operators
 
 Most operators (`+`, `-`, `=`, `==`, `<`, `<=`, etc.) should have spaces
@@ -238,6 +253,7 @@ replace fruit="apple" if fruit!="banana"
 ```
 
 #### Parentheses
+#### Parentheses
 
 Do not put spaces inside or outside parentheses for function calls.
 
@@ -250,6 +266,7 @@ egen mean = mean (lexp)
 egen mean = mean( lexp )
 ```
 
+#### Commas
 #### Commas
 
 Always put a space after a comma, never before, just like in regular
@@ -264,6 +281,7 @@ tab foo bar,row
 tab foo bar , row
 ```
 
+### Loops
 ### Loops
 
 Try to avoid repeating yourself when writing code. If you find yourself
@@ -294,6 +312,7 @@ replace `var' = `var' + 1
 ```
 
 ### Commands
+### Commands
 
 Stata doesn’t require you to type the full name of a command (ie.
 `generate`, `gen`, and `g` are all legal ways to invoke the `generate`
@@ -322,6 +341,7 @@ ta foo bar
 ```
 
 ### Comments
+### Comments
 
 Comments should describe *why* you are writing a particular piece of
 code that needs additional explanation, not *how* the code works. The
@@ -340,6 +360,7 @@ explanation text in one document that makes it much easier to understand
 what’s happening than code comments and a log file.
 
 #### Single-line comments
+#### Single-line comments
 
 Use `//` instead of `*` for line comments. While you can start a line
 comment with `*` in Stata, it’s not a good idea because it’s too easily
@@ -351,6 +372,7 @@ confused with multiplication.
 * Bad
 ```
 
+#### Multi-line comments
 #### Multi-line comments
 
 Use `/*` and `*/` for multi-line comments
@@ -377,6 +399,7 @@ comment
 */
 ```
 
+### Semicolons
 ### Semicolons
 
 Unless you have a good reason don’t use semicolons (`;`) to denote line
@@ -407,6 +430,7 @@ tabstat variable_1 variable_2 variable_3
 #delimit cr
 ```
 
+### Long lines
 ### Long lines
 
 Try to keep individual lines of code to 80 characters. This is a
