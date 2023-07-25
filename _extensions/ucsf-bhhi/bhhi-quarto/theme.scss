@@ -6,9 +6,14 @@ $font-family-sans-serif: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
 
 $font-family-monospace: "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
-// Font Colors
+// Colors
 
-$body-bg: #ffce6740;
+$primary: #052049 !default;
+$navbar-fg: #E2F4FC !default;
+$code-bg: #E2F4FC !default;
+$toc-active-border: #052049 !default;
+$toc-inactive-border: #E2F4FC!default;
+$headings-color: #052049 !default;
 
 /*-- scss:rules --*/
 
@@ -19,7 +24,17 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700
   @import url($web-font-path);
 }
 
-// Typography
-pre {
-  color: $body-color;
+// Title Block
+
+div.quarto-title-block h1.title {
+  color: $navbar-fg;
+}
+
+.quarto-title-banner .code-tools-button {
+  color: $navbar-fg;
+  text-transform: none;
+}
+
+.quarto-title-banner .code-tools-button:not(.disabled):hover {
+  border-bottom-width: 4px;
 }
