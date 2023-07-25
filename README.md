@@ -1,18 +1,5 @@
 # BHHI Stata Style Guide
 
-- [1. Files](#files)
-  - [1.1 Names](#names)
-  - [1.2 File paths](#file-paths)
-  - [1.3 Internal structure](#internal-structure)
-- [2 Syntax](#syntax)
-  - [2.1 Variable names](#variable-names)
-  - [2.2 Spacing](#spacing)
-  - [2.3 Loops](#loops)
-  - [2.4 Commands](#commands)
-  - [2.5 Comments](#comments)
-  - [2.6 Semicolons](#semicolons)
-  - [2.7 Long lines](#long-lines)
-
 This is the BHHI guide to writing Stata code. Its goal is to create
 consistency in our code and to make our code more readable and
 understandable for each other and for our future selves.
@@ -22,9 +9,9 @@ guide](https://style.tidyverse.org/) by Hadley Wickham
 ([license](https://creativecommons.org/licenses/by-sa/3.0/)), with
 modifications for the Stata language.
 
-## 1. Files
+## Files
 
-### 1.1 Names
+### Names
 
 File names should be meaningful and end in .do. Avoid using special
 characters in file names - stick with numbers, letters, -, and \_.
@@ -58,7 +45,7 @@ lead to problems with (case-sensitive) revision control systems. Prefer
 file names that are all lower case, and never have names that differ
 only in their capitalization.
 
-### 1.2 File paths
+### File paths
 
 **Always use relative file paths** in code instead of absolute file
 paths. Relative file paths are, as the name suggests, relative to the
@@ -89,7 +76,7 @@ likely to cause path compatibility problems. If you find yourself using
 `cd` in your code, there’s probably another way to accomplish what
 you’re trying to do that doesn’t involve changing the working directory.
 
-#### 1.2.1 Absolute file paths
+#### Absolute file paths
 
 There is one situation where we need to use absolute file paths: shared
 data resources. These are datasets used across multiple projects or
@@ -104,11 +91,11 @@ portability.
 
 We use operating system environmental variables to accomplish this. All
 operating systems (at least the ones we use) support environmental
-variables and they store a string in a named variable. So we individual
-set the path to our shared drive as an environmental variable and then
-in our code reference the environmental variable to get to the shared
-drive. This allows the paths to work across operating systems and
-doesn’t require us to have the same shared drive setup.
+variables and they store a string in a named variable. So we
+individually set the path to our shared drive as an environmental
+variable and then in our code reference the environmental variable to
+get to the shared drive. This allows the paths to work across operating
+systems and doesn’t require us to have the same shared drive setup.
 
 To make things easy we standardize the name of the environmental
 variable and load the path to the shared drive into a Stata global
@@ -117,12 +104,16 @@ variable `SHARED_DRIVE` and set it in the global variable
 `${shared_drive}`. Here’s the code snippet:
 
 ``` stata
-global shared_drive : env SHARED_DRIVE
+global bhhi_shared_drive : env BHHI_SHARED_DRIVE
 ```
 
 Add this line your `profile.do` file and it will run everytime you start
 Stata and the `${shared_drive}` global variable will always be available
-for you.
+for you. For example:
+
+``` stata
+use "${bhhi_shared_drive}/statewide_survey_processed_data/latest/statewide_survey_processed.dta"
+```
 
 The `profile.do` file needs to live in your home directory so Stata can
 find it. If you don’t already have a `profile.do` file (it’s not created
@@ -133,17 +124,47 @@ On Windows, it’s location probably looks like this:
 
 On Mac, it’s location probably looks like this: `/Users/eve/profile.do`
 
-###### 1.2.1.1 Setting the environment variable on Windows
+##### Setting the environmental variable
 
-1.  Hit the Start button and type in “environment variable”:
-2.  Click ‘Edit environmental variables for your account’
-3.  Click ‘New’ in the upper panel.
-4.  Enter `SHARED_DRIVE` in the Variable Name field and the path to the
-    `Research\BHHI` folder on the shared drive (ie. `Y:/Research/BHHI`)
-    in the Variable Value field. Then click OK.
-5.  Click OK in the bottom right of the window.
+<div>
 
-### 1.3 Internal structure
+> **Windows**
+>
+> 1.  Hit the Windows key or button and type “environment variable”.
+>
+> <img src="img/environmental_variables/step_1.png" style="width:25.0%" />
+>
+> 2.  Click ‘Edit environmental variables for your account’.
+>
+>     <img src="img/environmental_variables/step_2.png" style="width:25.0%" />
+>
+> 3.  Click ‘New’ in the upper panel.
+>
+>     <img src="img/environmental_variables/step_3.png" style="width:50.0%" />
+>
+> 4.  Enter `BHHI_SHARED_DRIVE` in the Variable Name field and the path
+>     to the `Research\BHHI` folder on the shared drive (ie.
+>     `Y:/Research/BHHI`) in the Variable Value field. Then click OK.
+>
+>     <img src="img/environmental_variables/step_4.png" style="width:75.0%" />
+>
+> 5.  Click OK in the bottom right of the window.
+>
+>     <img src="img/environmental_variables/step_5.png" style="width:50.0%" />
+
+</div>
+
+<div>
+
+> **MacOS**
+>
+> 1.  Open or create the `~/.zshenv` file in a text editor.
+> 2.  Add the following line (replacing `PATH TO SHARED DRIVE` as
+>     appropriate): `export BHHI_SHARED_DRIVE="PATH TO SHARED DRIVE"`
+
+</div>
+
+### Internal structure
 
 Use commented lines of - and = to break up your file into easily
 readable chunks.
@@ -158,9 +179,9 @@ If your script uses external `.ado` files or packages, note their use in
 a comment at the top of the file so others can ensure they have those
 files or packages installed.
 
-## 2 Syntax
+## Syntax
 
-### 2.1 Variable names
+### Variable names
 
 Stata has rules for variable names:
 
@@ -186,13 +207,13 @@ dayone
 _1_day
 ```
 
-### 2.2 Spacing
+### Spacing
 
 The spacebar is your friend! Putting spaces in your code makes it more
 readable and easier to understand, both for others and for your future
 self.
 
-#### 2.2.1 Operators
+#### Operators
 
 Most operators (`+`, `-`, `=`, `==`, `<`, `<=`, etc.) should have spaces
 on both sides.
@@ -216,7 +237,7 @@ gen variable_high if variable>1000
 replace fruit="apple" if fruit!="banana"
 ```
 
-#### 2.2.2 Parentheses
+#### Parentheses
 
 Do not put spaces inside or outside parentheses for function calls.
 
@@ -229,7 +250,7 @@ egen mean = mean (lexp)
 egen mean = mean( lexp )
 ```
 
-#### 2.2.3 Commas
+#### Commas
 
 Always put a space after a comma, never before, just like in regular
 English.
@@ -243,7 +264,7 @@ tab foo bar,row
 tab foo bar , row
 ```
 
-### 2.3 Loops
+### Loops
 
 Try to avoid repeating yourself when writing code. If you find yourself
 cut and pasting a single line multiple times, consider if it’s possible
@@ -272,7 +293,7 @@ replace `var' = `var' + 1
 }
 ```
 
-### 2.4 Commands
+### Commands
 
 Stata doesn’t require you to type the full name of a command (ie.
 `generate`, `gen`, and `g` are all legal ways to invoke the `generate`
@@ -300,7 +321,7 @@ g foo = 1
 ta foo bar
 ```
 
-### 2.5 Comments
+### Comments
 
 Comments should describe *why* you are writing a particular piece of
 code that needs additional explanation, not *how* the code works. The
@@ -318,7 +339,7 @@ analysis notes.** This format combines both code, output, and
 explanation text in one document that makes it much easier to understand
 what’s happening than code comments and a log file.
 
-#### 2.5.1 Single-line comments
+#### Single-line comments
 
 Use `//` instead of `*` for line comments. While you can start a line
 comment with `*` in Stata, it’s not a good idea because it’s too easily
@@ -330,7 +351,7 @@ confused with multiplication.
 * Bad
 ```
 
-#### 2.5.2 Multi-line comments
+#### Multi-line comments
 
 Use `/*` and `*/` for multi-line comments
 
@@ -356,7 +377,7 @@ comment
 */
 ```
 
-### 2.6 Semicolons
+### Semicolons
 
 Unless you have a good reason don’t use semicolons (`;`) to denote line
 ends. Most of the time you should use the line continuation operator
@@ -386,7 +407,7 @@ tabstat variable_1 variable_2 variable_3
 #delimit cr
 ```
 
-### 2.7 Long lines
+### Long lines
 
 Try to keep individual lines of code to 80 characters. This is a
 standard across many languages that makes it easier to read and review
