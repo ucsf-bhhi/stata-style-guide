@@ -100,19 +100,19 @@ systems and doesn’t require us to have the same shared drive setup.
 To make things easy we standardize the name of the environmental
 variable and load the path to the shared drive into a Stata global
 variable, which is easier to use in code. We call the environmental
-variable `SHARED_DRIVE` and set it in the global variable
-`${shared_drive}`. Here’s the code snippet:
+variable `BHHI_SHARED_DRIVE` and set it in the global variable
+`${bhhi_shared_drive}`. Here’s the code snippet:
 
 ``` stata
-global shared_drive : env SHARED_DRIVE
+global bhhi_shared_drive : env BHHI_SHARED_DRIVE
 ```
 
 Add this line your `profile.do` file and it will run everytime you start
-Stata and the `${shared_drive}` global variable will always be available
-for you. For example:
+Stata and the `${bhhi_shared_drive}` global variable will always be
+available for you. For example:
 
 ``` stata
-use "${shared_drive}/statewide_survey_processed_data/latest/statewide_survey_processed.dta"
+use "${bhhi_shared_drive}/statewide_survey_processed_data/latest/statewide_survey_processed.dta"
 ```
 
 The `profile.do` file needs to live in your home directory so Stata can
@@ -142,8 +142,8 @@ On Mac, it’s location probably looks like this: `/Users/eve/profile.do`
 >
 >     <img src="img/environmental_variables/step_3.png" style="width:50.0%" />
 >
-> 4.  Enter `SHARED_DRIVE` in the Variable Name field and the path to
->     the `Research\BHHI` folder on the shared drive (ie.
+> 4.  Enter `BHHI_SHARED_DRIVE` in the Variable Name field and the path
+>     to the `Research\BHHI` folder on the shared drive (ie.
 >     `Y:/Research/BHHI`) in the Variable Value field. Then click OK.
 >
 >     <img src="img/environmental_variables/step_4.png" style="width:75.0%" />
@@ -160,7 +160,7 @@ On Mac, it’s location probably looks like this: `/Users/eve/profile.do`
 >
 > 1.  Open or create the `~/.zshenv` file in a text editor.
 > 2.  Add the following line (replacing `PATH TO SHARED DRIVE` as
->     appropriate): `export SHARED_DRIVE="PATH TO SHARED DRIVE"`
+>     appropriate): `export BHHI_SHARED_DRIVE="PATH TO SHARED DRIVE"`
 
 </div>
 
